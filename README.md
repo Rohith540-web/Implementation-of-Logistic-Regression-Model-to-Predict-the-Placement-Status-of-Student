@@ -8,13 +8,63 @@ To write a program to implement the the Logistic Regression Model to Predict the
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1.Import the standard libraries.
-2.Upload the dataset and check for any null or duplicated values using .isnull() and .duplicated() function respectively.
-3.Import LabelEncoder and encode the dataset.
-4.Import LogisticRegression from sklearn and apply the model on the dataset.
-5.Predict the values of array.
-6.Calculate the accuracy, confusion and classification report by importing the required modules from sklearn.
-7.Apply new unknown values.
+1. Load and Prepare the Dataset
+Load Placement_Data.csv into a DataFrame.
+
+Make a copy of the original data to work on (data1).
+
+Drop unnecessary columns: sl_no (just an index) and salary (not known before placement).
+
+2. Handle Missing and Duplicate Data
+Check for missing values with isnull().sum().
+
+Check for duplicate rows with duplicated().sum().
+
+3. Encode Categorical Columns
+Use LabelEncoder to convert categorical features into numeric values.
+
+The following columns are encoded:
+
+gender, ssc_b, hsc_b, hsc_s, degree_t, workex, specialisation, and status.
+
+4. Split Features and Target
+x = all columns except status (input features).
+
+y = status column (target variable: 1 = placed, 0 = not placed).
+
+5. Train-Test Split
+Use train_test_split() to divide data:
+
+80% training
+
+20% testing
+
+Set random_state=0 for reproducibility
+
+6. Train Logistic Regression Model
+Use LogisticRegression with liblinear solver.
+
+Fit the model on training data (x_train, y_train).
+
+7. Predict and Evaluate
+Predict placement status for x_test.
+
+Use:
+
+accuracy_score to compute accuracy
+
+confusion_matrix to see TP, FP, FN, TN
+
+classification_report for precision, recall, F1-score
+
+8. Make a Custom Prediction
+
+Predict placement status for a new student record:
+
+[1, 80, 1, 90, 1, 1, 90, 1, 0, 85, 1, 85]
+These values represent:
+
+Encoded gender, ssc %, board, hsc %, board, stream, degree %, type, workex, etc.
 ## Program:
 ```
 
